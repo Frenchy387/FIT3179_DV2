@@ -88,7 +88,7 @@
         ],
 
       
-        "config": {"background": "  #edf8e9", "view": {"stroke": "  #edf8e9"},"font":"Play", "axis": {
+        "config": {"background": "  #deecf9", "view": {"stroke": "  #deecf9"},"font":"Play", "axis": {
           "domain": false,
           "titleFontSize": 13
       } ,"legend" :{"titleFontSize":13}
