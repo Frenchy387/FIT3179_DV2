@@ -1,0 +1,84 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width":175,
+  "height": 175,
+
+  "params": [
+    { "name": "time_param",
+    "bind":{
+      "input": "select",
+      "options":[
+        0.02,0.01,0,0.01,0.01,0.04,0.12,0.07,0.03,0.02,0.03,0.05,
+        0.02,0.01,0.06,0.1,0.04,0.03,0.02,0.06,0.07,0.04,0.05,0.07],
+      "labels": [
+        "1AM","2AM","3AM","4AM","5AM","6AM","7AM","8AM","9AM",
+        "10AM","11AM","12PM","1PM","2PM","3PM","4PM","5PM",
+        "6PM","7PM","8PM","9PM","10PM","11PM","12AM"],
+        "name": "Time Of The Day      "
+    },
+    "value":"0.12"
+    }
+  ],
+  "data": {
+    "url": "https://raw.githubusercontent.com/Frenchy387/Assignment/main/Waffle%20Chart.csv"
+  },
+  "transform": [
+    {"calculate": "time_param" , "as": "time"}
+
+  ],
+  "layer": [
+    {
+     "mark": {
+    "type": "circle"
+  },
+  "encoding": {
+    "x": {
+      "field": "Column",
+      "type": "quantitative",
+      "axis":null
+    },
+    "y": {
+      "field": "Row",
+      "type": "quantitative",
+      "axis":null
+    },
+    "tooltip":[
+      {"field": "time", "type": "quantitative","title":"Percentage Of Daily Crashes","format":".0%"}
+    ],
+
+    "size":{ "value": 125
+
+    },
+
+    "color": {
+      "condition": [
+        {
+          "test": "datum['Percent'] <= time_param",
+          "value": {
+            "expr": "'#253494'"
+          }
+        }
+      ],
+      "value": {"expr": "'#D3D3D3'"}
+    }
+  }},
+  {
+            "mark": {
+            "type": "text",
+            "align": "center",
+            "baseline": "middle",
+            "dy": -5,
+            "dx": 10,
+            "fontSize": 50
+            },
+
+            "encoding": {
+            "text": {"field": "time", "type": "nominal", "format": ".0%"},
+            "color": {"value": "black"}        
+            
+          }
+          }
+
+  ],
+  "config": {"background": "  #edf8e9", "view": {"stroke": "#edf8e9"}, "font": "Play"}
+}

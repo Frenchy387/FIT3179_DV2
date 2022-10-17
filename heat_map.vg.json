@@ -1,0 +1,56 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "data": {
+        "url": "https://raw.githubusercontent.com/Frenchy387/vis2/main/Code/heat_map_dates.csv"
+    },
+    "title": "Average Number Of Car Crashes (2016-2021)",
+    "config": {
+        "background":"  #edf8e9",
+        "font": "Play",
+        "view": {
+            "strokeWidth": 0,
+            "step": 13,
+            "stroke": "  #edf8e9"
+        },
+        "title": {
+          "fontSize": 16
+        },
+        "axis": {
+            "domain": false,
+            "titleFontSize": 13
+        }, "legend" :{"titleFontSize":13}
+    },
+    "mark": "rect",
+    "encoding": {
+        "x": {
+            "field": "Date",
+            "timeUnit": "date",
+            "type": "ordinal",
+            "title": "Day",
+            "axis": {
+                "labelAngle": 0,
+                "format": "%e"
+            }
+        },
+        "y": {
+            "field": "Date",
+            "timeUnit": "month",
+            "type": "ordinal",
+            "title": "Month"
+        },
+        "color": {
+            "field": "Crash",
+            "type": "quantitative",
+            "legend": {
+                "title": "Average Number Of Crashes",
+                "orient": "top"
+            }
+        },
+        "tooltip":[
+          {"field": "Date", "timeUnit": "monthdate", "type": "ordinal", "title": "Date"},
+          {"field": "Crash", "type": "quantitative", "title": "Average Number of Crashes" ,"format":",.0f"}
+            
+        ]
+    }
+  }

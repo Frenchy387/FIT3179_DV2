@@ -1,0 +1,100 @@
+{"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+"params": [
+          {
+            "name": "Severity_Above",
+            "value": 2,
+            "bind":{
+              "input": "range",
+              "min": 2,
+              "max": 3,
+              "step": 0.1,
+              "name": "Minimum Average Accident Severity    "
+            }              
+          }
+        ],
+        "width": "container",
+        "height": 200,
+        "data": {"url": "https://raw.githubusercontent.com/Frenchy387/WK10_HWRK/main/hw10.csv"},
+
+        "transform": [
+          {"calculate": "datum.Severity", "as": "Severity"},
+          {"calculate": "datum.crashes", "as": "Crashes"},    
+          {"calculate": "datum.cars", "as": "Car"},
+          {"calculate": "datum.dist", "as": "dist"},
+          {"calculate": "datum.State","as": "State"},
+          {"filter": "Severity_Above < datum.Severity"}
+                    ],
+
+        "encoding": {
+          "x": {"field": "Car", "type": "quantitative", "title": "Number Of Registered Cars","axis": {"tickCount": 4},
+"scale": {"type": "log", "domain": [1000, 15000000]}
+},
+
+          "y": {"field": "Crashes","type": "quantitative","axis": {"tickCount": 4},
+"scale": {"type": "log", "domain": [100, 1000000]}
+}},
+
+        "layer":[
+          {"mark": "circle",
+          "encoding": {
+
+          "color":{
+              "field": "Severity",
+              "title": "Average Severity",
+              "type": "quantitative",
+              "scale": {
+                    "type": "threshold",
+                        "domain": [2,2.2,2.4,2.6,2.8],
+                        "range": ["#ffffcc","#a1dab4","#41b6c4","#2c7fb8","#253494"]
+                        }  
+          
+          
+          },
+           "tooltip": [
+          {"field": "State","type": "nominal", "title": "State Code" },
+          {"field": "Car","format": ",", "type": "quantitative", "title": "Number Of Registered Cars" },
+          {"field": "Crashes","format": ",", "type": "quantitative", "title": "Number Of Crashes" },
+          {"field": "Severity","format": ".2", "type": "quantitative", "title": "Average Accident Severity" }
+      ]
+          }
+
+          },
+          {
+            "mark": {
+            "type": "text",
+            "align": "right",
+            "baseline": "middle",
+            "dx": -12,
+            "fontSize": 11.5,
+            "fontStyle": "italic"
+            },
+
+            "encoding": {
+            "text": {"field": "State", "type": "nominal"},
+            "color": {"value": "black"},
+            "opacity": {
+            "condition": {
+            "test": "datum['State'] == 'CA' || datum['State'] == 'TX'||datum['State'] == 'FL'||datum['State'] == 'VA'||datum['State'] == 'WA'",
+            "value": 1
+            },
+            "value": 0
+
+          }
+            
+          }
+          }
+
+
+        ],
+
+      
+        "config": {"background": "  #edf8e9", "view": {"stroke": "  #edf8e9"},"font":"Play", "axis": {
+          "domain": false,
+          "titleFontSize": 13
+      } ,"legend" :{"titleFontSize":13}
+        
+        }
+
+      
+      
+}

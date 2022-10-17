@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+  
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+   <link rel = "StyleSheet" href = "data_index.css"> 
+
+</head>
+
+<body>
+<div class = 'page'>
+
+    <!-- Title -->
+    <div class = "Title">
+        <div class = "pure-g">
+            <div class = "pure-u-1">
+                <h1 class = "Title">Patterns In US Car Accidents</h1>
+                <p><em>Data Visualisation 2 - Samuel French</em></p>
+            </div>        
+        </div>
+    </div>
+
+    <!-- State Map -->
+    <div class="pure-g">
+        <div class = "pure-u-1">
+            <h2 class = "Section_Title"> State - Overview </h2>
+        </div>
+    </div>
+    
+
+    <div class="pure-g">
+        <div class = "pure-u-1"> <h3 class ='subtit'> <u>State Crashes</u> </h3></div>
+
+        <div class = "pure-u-1-2">
+            <p class = "para"> In America, travel by  car is the most used form of transport, miles ahead of trains or buses. With around 
+                300 million active registered cars to date, the roads are a significant part of an average Americans daily life. </p>
+        </div>
+
+        <div class = "pure-u-1-2">
+            <p class = "para"> Due to mass amount of transport, there is also a mass amount of accdients. In 2022 alone, there have been records of over 6 million
+                car crashes, thus it is vital we try to understand the underlying patterns beneath the raw figures. </p>
+        </div>
+
+        <div class = "pure-u-1">
+            <div id="choro" class="vis-container"></div>
+        </div>
+    </div>
+
+    <!-- Break -->
+    <div><br></div>
+
+    <!-- Severity Bubble -->
+    <div class="pure-g">
+        <div class = "pure-u-1"> <h3 class ='subtit'> <u> Crash Severity </u> </h3></div>
+        <div class="pure-u-1-2">
+            <div id="bubble" class="vis-container"></div>
+        </div>
+        <div class = "pure-u-1-2">
+            <p class = 'para'> 
+                When assessing an accident it is placed into a severity catergory, ranging from 1-4. 
+                <br>
+                <br> 1 - No Injuries Occured
+                <br> 2 - Minor Injuries No Hospitalisation
+                <br> 3 - Hospitalisation Required
+                <br> 4 - 100% Mortality Rate Within Accident 
+                <br>
+                <br>
+                <em> Note: You can move the slider to filter out State's based upon their average accident severity</em>
+            <p>
+        </div>
+    </div>
+
+    <!-- County Map -->
+    <div class="pure-g">
+        <div class = "pure-u-1">
+            <h2 class = "Section_Title"> County - Overview </h2>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class = "pure-u-1"> <h3 class ='subtit'><u> County Crashes </u></h3></div>
+        <div class = "pure-u-1">
+            <div id="choro_county" class="vis-container"></div>
+        </div>
+
+        <div class = "pure-u-1-2">
+            <p> Although an overview of crashes per state is a decent overview, it is possible to dive deeper and view crashes by Countys. Suprisingly, the States' with
+                the higher number of crashes do not always contain the county's with the highest number of crashes. </p>
+        </div>
+
+        <div class = "pure-u-1-2">
+            <p>  This can be seen best within 'King' County, Texas. It averages a whopping 55 crawshes per capita, whilst only hosting a population of 289. At first glance, 
+                this appears to be very strange, however when noted that it is home to to the intersection between some of Texas' largest highways it beigns to make sense. </p>
+        </div>
+    </div>
+
+     <!-- Time -->
+     <div class="pure-g">
+        <div class = "pure-u-1">
+            <h2 class = "Section_Title"> Time - Overview </h2>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class = "pure-u-1"> <h3 class ='subtit'> <u> Throughout The Hours Of The Day</u> </h3></div>
+        <div class = "pure-u-1-3">
+            <div id="waffle" class="vis-container"></div>
+        </div>
+        <div class = "pure-u-2-3"> 
+            <p class = 'waffle_text'> 
+                Traffic varies largely based upon the time of day, with peak hour and school drop off times creating large congestion, whereas 
+                in the early morning there is little to no cars. These patterns relative to the respective time period can be visualised on
+                the waffle chart.
+                <br><br><br>
+            <em> Note: You can use the slider to filter through different times of the day on the waffle chart</em> <br><br></p>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class = "pure-u-1"> <h3 class ='subtit'> <u>Patterns Throughout The Calendar Year</u></h3></div>
+        <div class = "pure-u-1-3"> 
+            <p class = "para"> <br><br> A distinct pattern can be seen towards the end of the year, this coincides with the respective chistmas break.
+                This being a period of time where an increase amount of cars on the road is expected and hence an increase in number of crashes.
+            </p>
+            
+        </div>
+        <div class = "pure-u-2-3">
+            <div id="heat" class="vis-container"></div>
+        </div>
+    </div>
+  
+</div>
+
+
+<script type="text/javascript">
+        var spec1 = "choro_fiilt.vg.json";
+        var spec2 = "county_choro.vg.json";
+        var spec3 = "bubble.vg.json";
+        var spec4 = "heat_map.vg.json"
+        var spec5 = "1am.vg.json";
+        
+
+        vegaEmbed('#choro', spec1, { "actions": false }).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#choro_county', spec2, { "actions": false }).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#bubble', spec3, { "actions": false }).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#heat', spec4, { "actions": false }).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#waffle', spec5, { "actions": false }).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+{"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "US County Car Accidents Per Poppulation (2016-2021)",
+    "width": 800,
+    "height": 400,
+    "projection": {"type": "albersUsa"},
+    "layer": [
+    {
+      "data": {
+      "url": "https://raw.githubusercontent.com/Frenchy387/vis2/main/JS/us-county-boundaries.json",
+      "format": {"type": "topojson", "feature": "us-county-boundaries"}
+      },
+      "transform": [
+        {"calculate": "'Data is not available in ' + datum.properties.name", "as": "note"}
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ddd",
+        "stroke": "grey",
+        "strokeWidth": 1
+      },
+      "encoding": {"tooltip": {"field": "note"}}
+    },
+    {
+     "data": {
+        "url": "https://raw.githubusercontent.com/Frenchy387/vis2/main/JS/us-county-boundaries.json",
+        "format": {"type": "topojson", "feature": "us-county-boundaries"}
+    },
+    "transform": [
+        {
+            "lookup": "properties.geoid",
+            "from": {
+                "data": {
+                    "url": "https://raw.githubusercontent.com/Frenchy387/vis2/main/Code/county_finale.csv"
+                },
+                "key": "fips", "fields": ["Crash","Population"]
+            }
+        },
+        {
+             "calculate": "datum.Crash", "as": "Number of Crashes"},
+             {
+             "calculate": "datum.Population", "as": "Population"},
+             {
+             "calculate": "datum.Crash/datum.Population", "as": "Crash Population"}
+    ],
+    "mark": {"type": "geoshape","stroke": "grey"},
+    "encoding": {
+        "color":{
+            "field": "Crash Population",
+            "type": "quantitative",
+            "scale": { "type": "log"},
+            "legend": {"format": "2", "title":"Crash/Population"}
+        },
+        
+    "tooltip": [
+        {"field": "properties.state_name", "type": "nominal", "title": "State"},
+        {"field": "properties.name", "type": "nominal", "title": "County"},
+        {"field": "Crash Population", "type": "quantitative", "title": "Crashes/Population" ,"format":".2"},
+        {"field": "Number of Crashes", "type": "quantitative", "title": "Number Of Crashes" ,"format":","},
+        {"field": "Population", "type": "quantitative", "title": "Population" ,"format":","}
+        
+    ]
+    
+    }         
+    }
+  ],
+  "config": {"background": "  #edf8e9", "view": {"stroke": "  #edf8e9"},"font":"Play","title": {
+    "fontSize": 16
+  }, "legend" :{"titleFontSize":13}
+  }
+}
