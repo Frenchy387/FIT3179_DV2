@@ -6,12 +6,12 @@
     },
     "title": "Average Number Of Car Crashes (2016-2021)",
     "config": {
-        "background":"  #edf8e9",
+        "background":"  #deecf9",
         "font": "Play",
         "view": {
             "strokeWidth": 0,
             "step": 13,
-            "stroke": "  #edf8e9"
+            "stroke": "  #deecf9"
         },
         "title": {
           "fontSize": 16
