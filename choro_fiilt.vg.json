@@ -86,7 +86,7 @@
       ]
     },
     {
-      "mark": {"type": "text", "fontSize": 28},
+      "mark": {"type": "text", "fontSize": 20},
       "transform": [
         {
           "filter": {
