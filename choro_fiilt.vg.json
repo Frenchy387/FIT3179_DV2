@@ -159,7 +159,7 @@
     }
   ],
   "config": {"background": "  #deecf9", "view": {"stroke": "  #deecf9"}, "font": "Play","title": {
-    "fontSize": 22},"axis": {"domain": false,"titleFontSize": 13 }, "style": {
+    "fontSize": 20},"axis": {"domain": false,"titleFontSize": 13 }, "style": {
       "guide-label": {
             "fontSize": 11,
             "fontStyle": "italic"
