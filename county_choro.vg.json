@@ -64,7 +64,7 @@
     }
   ],
   "config": {"background": " #deecf9", "view": {"stroke": "  #deecf9"},"font":"Play","title": {
-    "fontSize": 16
+    "fontSize": 19
   }, "legend" :{"titleFontSize":13}
   }
 }
