@@ -139,7 +139,7 @@
       ],
       "mark": {"type": "bar", "fill": "#253494", "stroke": "#28282B"},
       "encoding": {
-        "column": {"field": "key", "type": "nominal", "title": null},
+        "column": {"field": "key", "type": "nominal", "title": null,"axis":{"labels":false}},
         "x": {"field": "State", "type": "nominal", "title": null},
         "y": {
           "field": "value",
