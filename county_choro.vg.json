@@ -63,7 +63,7 @@
     }         
     }
   ],
-  "config": {"background": "  #edf8e9", "view": {"stroke": "  #edf8e9"},"font":"Play","title": {
+  "config": {"background": " #deecf9", "view": {"stroke": "  #deecf9"},"font":"Play","title": {
     "fontSize": 16
   }, "legend" :{"titleFontSize":13}
   }
